@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahul Yadav Portfolio</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f4efe8;
+      --bg-alt: #ffffff;
+      --text: #1e2a36;
+      --muted: #5f6b77;
+      --primary: #184e77;
+      --primary-strong: #0f2f4b;
+      --accent: #d97706;
+      --card: rgba(255, 255, 255, 0.82);
+      --border: rgba(24, 78, 119, 0.12);
+      --shadow: 0 20px 50px rgba(15, 47, 75, 0.12);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(217, 119, 6, 0.14), transparent 28%),
+        radial-gradient(circle at top right, rgba(24, 78, 119, 0.12), transparent 24%),
+        linear-gradient(180deg, #fbf8f4 0%, var(--bg) 48%, #eef3f7 100%);
+      padding-top: 76px;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.3), transparent 72%);
+      opacity: 0.35;
+    }
+
+    .navbar {
+      background: rgba(10, 23, 37, 0.72) !important;
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px rgba(5, 15, 25, 0.15);
+    }
+
+    .navbar-brand {
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-link {
+      position: relative;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0.25rem;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #ffffff, transparent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link:focus::after {
+      transform: scaleX(1);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: calc(100vh - 76px);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(217, 119, 6, 0.2), transparent 24%),
+        radial-gradient(circle at 80% 18%, rgba(255, 255, 255, 0.18), transparent 18%),
+        linear-gradient(135deg, var(--primary-strong) 0%, #184e77 52%, #2c7da0 100%);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: 3rem 1rem;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      filter: blur(2px);
+      z-index: -1;
+    }
+
+    .hero::before {
+      width: 360px;
+      height: 360px;
+      top: -120px;
+      right: -100px;
+    }
+
+    .hero::after {
+      width: 280px;
+      height: 280px;
+      bottom: -80px;
+      left: -90px;
+    }
+
+    .profile-img {
+      width: 170px;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid rgba(255, 255, 255, 0.82);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .profile-img:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 26px 52px rgba(0, 0, 0, 0.28);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.6rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .lead {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero .btn {
+      border: 0;
+      padding: 0.9rem 1.5rem;
+      border-radius: 999px;
+      font-weight: 700;
+      color: var(--primary-strong);
+      background: linear-gradient(135deg, #ffffff 0%, #fff4e6 100%);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .hero .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.24);
+    }
+
+    .section {
+      padding: 88px 0;
+    }
+
+    .section h2 {
+      font-size: clamp(1.9rem, 3vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .section p,
+    .section li {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    #about .container,
+    #contact .container {
+      background: var(--card);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 48px 32px;
+    }
+
+    #about .container {
+      max-width: 900px;
+    }
+
+    /* SKILLS */
+    #skills {
+      position: relative;
+    }
+
+    #skills .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .skill-box {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(244, 240, 233, 0.9));
+      border: 1px solid rgba(24, 78, 119, 0.12);
+      box-shadow: 0 12px 24px rgba(15, 47, 75, 0.08);
+      padding: 18px 16px;
+      border-radius: 18px;
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 700;
+      color: var(--primary-strong);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    }
+
+    .skill-box:hover {
+      transform: translateY(-6px);
+      border-color: rgba(24, 78, 119, 0.24);
+      box-shadow: 0 18px 34px rgba(15, 47, 75, 0.12);
+    }
+
+    #contact .form-control {
+      border-radius: 16px;
+      border: 1px solid rgba(24, 78, 119, 0.16);
+      padding: 0.95rem 1rem;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: none;
+    }
+
+    #contact .form-control:focus {
+      border-color: rgba(24, 78, 119, 0.35);
+      box-shadow: 0 0 0 0.2rem rgba(24, 78, 119, 0.12);
+    }
+
+    #contact .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 0.95rem 1.25rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary-strong), var(--primary));
+      box-shadow: 0 14px 28px rgba(15, 47, 75, 0.18);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    #contact .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 32px rgba(15, 47, 75, 0.22);
+    }
+
+    footer {
+      background: linear-gradient(135deg, #0d1c2b, #11293f);
+      color: rgba(255, 255, 255, 0.88);
+      padding: 24px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .section .container {
+      position: relative;
+    }
+
+    @media (max-width: 767.98px) {
+      body {
+        padding-top: 68px;
+      }
+
+      .hero {
+        min-height: calc(100vh - 68px);
+      }
+
+      #about .container,
+      #contact .container {
+        padding: 32px 20px;
+        border-radius: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Rahul</a>
+
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section id="home" class="hero">
+  <div>
+    <!-- YOUR PHOTO -->
+    <img src="k:\College Docs\Image.jpg" alt="Rahul Yadav" class="profile-img mb-3">
+
+    <h1>Hi, I'm Rahul Yadav</h1>
+    <p class="lead">Student | Future Developer</p>
+
+    <button class="btn mt-3" onclick="scrollToSection('about')">
+      Explore
+    </button>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="container text-center">
+    <h2>About Me</h2>
+
+    <p class="mt-3">
+      Hello! My name is <strong>Rahul Yadav</strong>.<br>
+      Date of Birth: <strong>16 March 2006</strong>.<br><br>
+    Passionate about building efficient solutions and continuously improving programming skills through learning new technologies.
+    </p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section bg-light">
+  <div class="container text-center">
+    <h2>My Skills</h2>
+
+    <div class="row mt-4">
+
+      <div class="col-md-3">
+        <div class="skill-box">HTML</div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="skill-box">CSS</div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="skill-box">JavaScript</div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="skill-box">Bootstrap</div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="skill-box">Python</div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="skill-box">C Programming</div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="skill-box">Git & GitHub</div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="skill-box">Problem Solving</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <div class="container text-center">
+    <h2>Contact Me</h2>
+    <p class="mt-3">Feel free to connect with me!</p>
+
+    <form class="mt-4" onsubmit="return submitForm()">
+      <div class="row justify-content-center">
+        <div class="col-md-4">
+          <input type="text" class="form-control mb-3" placeholder="Your Name" required>
+          <input type="email" class="form-control mb-3" placeholder="Your Email" required>
+          <textarea class="form-control mb-3" rows="3" placeholder="Message"></textarea>
+          <button class="btn btn-dark w-100">Send</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Rahul Yadav | All Rights Reserved</p>
+</footer>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function submitForm() {
+    alert("Message Sent Successfully!");
+    return false;
+  }
+</script>
+
+</body>
+</html>
